@@ -14,10 +14,6 @@ ip_address = sock.getsockname()[0]
 # done
 sock.close
 
-
-
-
-
 hostname = socket.gethostname()
 #ip_address = socket.gethostbyname(socket.gethostname() + ".local")
 
@@ -503,4 +499,5 @@ def page(sendpage):
 	return app.send_static_file(sendpage)
 
 if __name__ == '__main__':
-	app.run(debug=True, host=ip_address, port=PORT)
+	from waitress import serve
+	serve(app, host=ip_address, port=PORT)
